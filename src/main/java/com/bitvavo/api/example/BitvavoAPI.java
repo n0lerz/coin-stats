@@ -18,6 +18,7 @@ import java.util.*;
 public class BitvavoAPI {
     Bitvavo bitvavo;
 
+    //for testing only
     public BitvavoAPI() {
         bitvavo = new Bitvavo(new JSONObject("{" +
                 "APIKEY: '" + APIKeysLocal.KEY + "', " +
@@ -28,6 +29,7 @@ public class BitvavoAPI {
                 "DEBUGGING: false }"));
     }
 
+    //for sign in screen
     public BitvavoAPI(String APIKey, String APISecret) {
         bitvavo = new Bitvavo(new JSONObject("{" +
                 "APIKEY: '" + APIKey + "', " +
@@ -57,22 +59,63 @@ public class BitvavoAPI {
         return assetList;
     }
 
-    /*public double calculateStakingReward(Asset asset) {
-        double
-    }*/
+    public double getTotalAmountBought(Asset asset) {
+        JSONArray response;
+        response = bitvavo.trades("BTC-EUR", new JSONObject());
+        for (int i = 0; i < response.length(); i++) {
+            boolean settled = response.getJSONObject(i).getBoolean("settled");
+            String side = response.getJSONObject(i).getString("side");
+            double amount = response.getJSONObject(i).getDouble("amount");
+            double totalAmountBought = 0.0;
+            if (settled == true) {
+                if (side.equals("buy")) {
+                    totalAmountBought += amount;
+                } else if (side.equals("sell")) {
+                    totalAmountBought -= amount;
+                }
+            }
+        }
+        return
+    }
 
-    public double getTickerPrice(Asset asset)
-    {
+
+    public double getTotalAmount(Asset asset) { // TODO fix this
+        JSONArray response;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("symbol", asset.getSymbol());
+        response = bitvavo.balance(jsonObject);
+        double available = response.getJSONObject(0).getDouble("available");
+        double inOrder = response.getJSONObject(0).getDouble("inOrder");
+        double totalAmount = available + inOrder;
+        return totalAmount;
+    }
+
+    public double calculateStakingRewardAmount(Asset asset) {
+        double stakingReward = 0.0;
+        stakingReward = getTotalAmount(asset) - getTotalAmountBought(asset);
+        System.out.println("Staking reward: " + stakingReward);
+        return stakingReward;
+    }
+
+    public double calculateStakingRewardValue(Asset asset) {
+        double stakingRewardValue = 0.0;
+        stakingRewardValue = calculateStakingRewardAmount(asset) * getTickerPrice(asset);
+        System.out.println("stakingRewardValue: " + stakingRewardValue);
+        return stakingRewardValue;
+    }
+
+    public double getTickerPrice(Asset asset) {
         JSONArray response;
         double tickerPrice = 0.0;
         JSONObject json = new JSONObject();
         json.put("market", asset.getMarket());
         response = bitvavo.tickerPrice(json);
         tickerPrice = response.getJSONObject(0).getDouble("price"); //TEST THIS
+        System.out.println("Ticker price: " + tickerPrice);
         return tickerPrice;
     }
 
-    public void printAssetStats(Asset asset) {
+    public void printAssetStats(Asset asset) { //TODO split into smaller methods
         JSONArray response;
 
         double currentAssetPrice = 0.0;
