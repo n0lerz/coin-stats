@@ -9,8 +9,9 @@ public class Main extends Application {
     public static void main(String[] args) {
         BitvavoAPI bitvavoAPI = new BitvavoAPI();
         bitvavoAPI.getAllAssets();
-        Asset asset = new Asset("ADA");
+        Asset asset = new Asset("ENJ");
         System.out.println(bitvavoAPI.getTickerPrice(asset));
+        bitvavoAPI.printAssetStats(asset);
         launch(args);
     }
 

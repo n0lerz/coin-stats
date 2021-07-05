@@ -72,12 +72,12 @@ public class BitvavoAPI {
         return tickerPrice;
     }
 
-    /*public void testREST(Asset asset) {
+    public void printAssetStats(Asset asset) {
         JSONArray response;
 
         double currentAssetPrice = 0.0;
         JSONObject json = new JSONObject();
-        json.put("market", "ADA-EUR");
+        json.put("market", asset.getMarket());
         response = bitvavo.tickerPrice(json);
         for (int i = 0; i < response.length(); i++) {
 //            System.out.println(response.getJSONObject(i).toString(2));
@@ -91,7 +91,7 @@ public class BitvavoAPI {
         totalValue = totalCost = totalProfit = totalAmount = totalValueSold = 0.0;
         String side, status;
 //        side = status = "";
-        response = bitvavo.getOrders("ADA-EUR", new JSONObject());
+        response = bitvavo.getOrders(asset.getMarket(), new JSONObject());
         for (int i = 0; i < response.length(); i++) {
 //            System.out.println(response.getJSONObject(i).toString(2));
             side = response.getJSONObject(i).getString("side");
@@ -126,11 +126,9 @@ public class BitvavoAPI {
         // for(int i = 0; i < response.length(); i ++) {
         //   System.out.println(response.getJSONObject(i).toString(2));
         // }
-
-        // System.out.println(bitvavo.account().toString(2));
-
+        //TODO replace getorders with trades
 
         int remaining = bitvavo.getRemainingLimit();
         System.out.println("remaining limit is " + remaining);
-    }*/
+    }
 }
