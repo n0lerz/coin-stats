@@ -1,4 +1,4 @@
-package com.bitvavo.api;
+package com.bitvavo.api.example.service;
 
 import java.net.*;
 import javax.net.ssl.*;

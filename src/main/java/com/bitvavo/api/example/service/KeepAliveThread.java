@@ -1,4 +1,4 @@
-package com.bitvavo.api;
+package com.bitvavo.api.example.service;
 
 public class KeepAliveThread extends Thread {
   public void run(){
