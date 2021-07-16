@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.bitvavo.api.example.controllers.MainController">
+   <children>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="250.0" prefWidth="400.0">
+         <children>
+            <Button layoutX="75.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Sign in" fx:id="button" onAction="#handleButtonClick"/>
+            <Label layoutX="75.0" layoutY="59.0" text="API Key" />
+            <Label layoutX="75.0" layoutY="112.0" text="API Secret" />
+            <TextField layoutX="75.0" layoutY="76.0" prefHeight="25.0" prefWidth="250.0" fx:id="apiKey"/>
+            <TextField layoutX="75.0" layoutY="129.0" prefHeight="25.0" prefWidth="250.0" fx:id="apiSecret"/>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
