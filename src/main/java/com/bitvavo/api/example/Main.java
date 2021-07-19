@@ -1,4 +1,4 @@
-package com.bitvavo.api.example.views;
+package com.bitvavo.api.example;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

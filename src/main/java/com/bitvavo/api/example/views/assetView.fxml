@@ -9,18 +9,19 @@
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="63.0" layoutY="337.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-      <Circle fill="#ff6600" layoutX="160.0" layoutY="28.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="#ff6600" layoutX="104.0" layoutY="28.0" radius="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="282.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-      <Label layoutX="138.0" layoutY="7.0" text="Coin" textFill="WHITE">
+      <Label layoutX="82.0" layoutY="7.0" text="Coin" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="138.0" layoutY="22.0" text="Stats" textFill="WHITE">
+      <Label layoutX="82.0" layoutY="22.0" text="Stats" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ListView layoutX="29.0" layoutY="80.0" prefHeight="229.0" prefWidth="263.0" />
+      <ListView fx:id="assetsListView" layoutX="14.0" layoutY="80.0" prefHeight="229.0" prefWidth="280.0" />
+      <ListView fx:id="statsListView" layoutX="306.0" layoutY="80.0" prefHeight="229.0" prefWidth="280.0" />
    </children>
 </AnchorPane>
