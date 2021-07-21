@@ -66,6 +66,7 @@ public class BitvavoAPI {
             System.out.println(response.getJSONObject(i));
             Asset ownedAsset = new Asset(response.getJSONObject(i).getString("symbol"));
             ownedAssetList.add(ownedAsset);
+            System.out.println(ownedAsset.getSymbol());
         }
         return ownedAssetList;
     }

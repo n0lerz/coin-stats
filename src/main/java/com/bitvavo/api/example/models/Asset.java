@@ -105,4 +105,9 @@ public class Asset {
     public void setAveragePrice(double averagePrice) {
         this.averagePrice = averagePrice;
     }
+
+    /*@Override
+    public String toString() {
+        return symbol;
+    }*/
 }
