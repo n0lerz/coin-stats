@@ -42,8 +42,12 @@ public class MainController {
                 alert.setHeaderText("Invalid API Key and/or Secret");
                 alert.setContentText("Please try again.");
                 alert.showAndWait();*/
+
+                //remove after testing
                 BitvavoAPI bitvavoAPIKeylessEntry = new BitvavoAPI();
                 openAssetView(bitvavoAPIKeylessEntry);
+                Stage stage = (Stage) button.getScene().getWindow();
+                stage.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
