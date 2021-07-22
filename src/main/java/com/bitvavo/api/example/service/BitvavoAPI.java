@@ -1,9 +1,7 @@
-package com.bitvavo.api.example;
+package com.bitvavo.api.example.service;
 
-import com.bitvavo.api.*;
 import com.bitvavo.api.example.models.Asset;
 import org.json.*;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
@@ -30,7 +28,6 @@ public class BitvavoAPI {
                 "DEBUGGING: false }"));
     }
 
-    //for sign in screen
     public BitvavoAPI(String APIKey, String APISecret) {
         bitvavo = new Bitvavo(new JSONObject("{" +
                 "APIKEY: '" + APIKey + "', " +

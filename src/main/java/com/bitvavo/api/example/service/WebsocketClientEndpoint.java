@@ -1,4 +1,4 @@
-package com.bitvavo.api;
+package com.bitvavo.api.example.service;
 
 import org.json.*;
 import java.net.URI;
@@ -11,7 +11,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.OnError;
 import javax.websocket.Session;
 import javax.websocket.WebSocketContainer;
-import javax.websocket.PongMessage;
 import java.util.concurrent.TimeUnit;
 import java.util.*;
 import java.io.*;
