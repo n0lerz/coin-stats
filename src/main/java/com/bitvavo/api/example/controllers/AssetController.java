@@ -7,26 +7,35 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
-
-import java.util.Observable;
 
 public class AssetController {
 
     @FXML
     private ListView<Asset> assetsListView;
     @FXML
-    private TextArea statsTextArea;
+    private Label labelTickerPrice;
+    @FXML
+    private Label labelTotalAmount;
+    @FXML
+    private Label labelTotalValue;
+    @FXML
+    private Label labelTotalCost;
+    @FXML
+    private Label labelValueSold;
+    @FXML
+    private Label labelProfit;
+    @FXML
+    private Label labelStakingAmount;
+    @FXML
+    private Label labelStakingValue;
+    @FXML
+    private Label labelAveragePrice;
+
 
     private BitvavoAPI bitvavoAPI;
-    private Asset asset;
 
 
     public void populateAssetListView(BitvavoAPI bitvavoAPI) {
@@ -51,11 +60,28 @@ public class AssetController {
             @Override
             public void changed(ObservableValue<? extends Asset> observable, Asset oldValue, Asset selectedAsset) {
                 selectedAsset.setAmount(bitvavoAPI.getTotalAmount(selectedAsset));
-                statsTextArea.s
-                statsTextArea.setText("Amount: " + selectedAsset.getAmount());
-                System.out.println("Selected item: " + selectedAsset.getSymbol());
+                selectedAsset.setCurrentTickerPrice(bitvavoAPI.getTickerPrice(selectedAsset));
+                selectedAsset.setAmount(bitvavoAPI.getTotalAmount(selectedAsset));
+                selectedAsset.setTotalValue(bitvavoAPI.calculateTotalValue(selectedAsset));
+                selectedAsset.setTotalCost(bitvavoAPI.calculateTotalCost(selectedAsset));
+                selectedAsset.setValueSold(bitvavoAPI.getValueSold(selectedAsset));
+                selectedAsset.setProfit(bitvavoAPI.calculateProfit(selectedAsset));
+                selectedAsset.setStakingRewardAmount(bitvavoAPI.calculateStakingRewardAmount(selectedAsset));
+                selectedAsset.setStakingRewardValue(bitvavoAPI.calculateStakingRewardValue(selectedAsset));
+                selectedAsset.setAveragePrice(bitvavoAPI.calculateAveragePrice(selectedAsset));
+
+                labelTickerPrice.setText("€" + selectedAsset.getCurrentTickerPrice());
+                labelTotalAmount.setText(selectedAsset.getAmount() + " " + selectedAsset.getSymbol());
+                labelTotalValue.setText("€" + selectedAsset.getTotalValue());
+                labelTotalCost.setText("€" + selectedAsset.getTotalCost());
+                labelValueSold.setText("€" + selectedAsset.getValueSold());
+                labelProfit.setText("€" + selectedAsset.getProfit());
+                labelStakingAmount.setText(selectedAsset.getStakingRewardAmount() + " " + selectedAsset.getSymbol());
+                labelStakingValue.setText("€" + selectedAsset.getStakingRewardValue());
+                labelAveragePrice.setText("€" + selectedAsset.getAveragePrice());
+
                 bitvavoAPI.printRemainingLimit();
             }
-        });// TODO add label + add unit
+        });
     }
 }

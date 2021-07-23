@@ -14,7 +14,7 @@ import java.util.*;
  * README: https://github.com/bitvavo/java-bitvavo-api
  */
 
-public class BitvavoAPI { //TODO delete all printlns
+public class BitvavoAPI {
     Bitvavo bitvavo;
 
     //for testing only
@@ -43,7 +43,6 @@ public class BitvavoAPI { //TODO delete all printlns
         List<Asset> assetList = new ArrayList<Asset>();
         response = bitvavo.assets(new JSONObject());
         for (int i = 0; i < response.length(); i++) {
-            System.out.println(response.getJSONObject(i).toString(2));
             Asset asset = new Asset(response.getJSONObject(i).getString("symbol"));
             assetList.add(asset);
         }
@@ -54,12 +53,9 @@ public class BitvavoAPI { //TODO delete all printlns
         JSONArray response;
         List<Asset> ownedAssetList = new ArrayList<Asset>();
         response = bitvavo.balance(new JSONObject());
-        System.out.println("getAllOwnedAssets:");
         for (int i = 0; i < response.length(); i++) {
-            System.out.println(response.getJSONObject(i));
             Asset ownedAsset = new Asset(response.getJSONObject(i).getString("symbol"));
             ownedAssetList.add(ownedAsset);
-            System.out.println(ownedAsset.getSymbol());
         }
         return ownedAssetList;
     }
@@ -78,7 +74,6 @@ public class BitvavoAPI { //TODO delete all printlns
                 totalAmountBought -= amount;
             }
         }
-        System.out.println("totalAmountBought: " + totalAmountBought);
         return totalAmountBought;
     }
 
@@ -91,35 +86,30 @@ public class BitvavoAPI { //TODO delete all printlns
         double available = response.getJSONObject(0).getDouble("available");
         double inOrder = response.getJSONObject(0).getDouble("inOrder");
         double totalAmount = available + inOrder;
-        System.out.println("totalAmount: " + totalAmount);
         return totalAmount;
     }
 
     public double calculateStakingRewardAmount(Asset asset) {
         double stakingReward = 0.0;
         stakingReward = getTotalAmount(asset) - getTotalAmountBought(asset);
-        System.out.println("stakingReward: " + stakingReward);
         return stakingReward;
     }
 
     public double calculateStakingRewardValue(Asset asset) {
         double stakingRewardValue = 0.0;
         stakingRewardValue = calculateValue(calculateStakingRewardAmount(asset), asset);
-        System.out.println("stakingRewardValue: " + stakingRewardValue);
         return stakingRewardValue;
     }
 
     public double calculateTotalValue(Asset asset) {
         double totalValue = 0.0;
         totalValue = calculateValue(getTotalAmount(asset), asset);
-        System.out.println("totalValue: " + totalValue);
         return totalValue;
     }
 
     public double calculateValue(double amount, Asset asset) {
         double value = 0.0;
         value = amount * getTickerPrice(asset);
-        System.out.println("value: " + value);
         return value;
     }
 
@@ -130,7 +120,6 @@ public class BitvavoAPI { //TODO delete all printlns
         json.put("market", asset.getMarket());
         response = bitvavo.tickerPrice(json);
         tickerPrice = response.getJSONObject(0).getDouble("price");
-        System.out.println("tickerPrice: " + tickerPrice);
         return tickerPrice;
     }
 
@@ -165,7 +154,6 @@ public class BitvavoAPI { //TODO delete all printlns
         String side, status;
         response = bitvavo.getOrders(asset.getMarket(), new JSONObject());
         for (int i = 0; i < response.length(); i++) {
-//            System.out.println(response.getJSONObject(i).toString(2));
             side = response.getJSONObject(i).getString("side");
             filledAmountQuote = response.getJSONObject(i).getDouble("filledAmountQuote");
             status = response.getJSONObject(i).getString("status");
