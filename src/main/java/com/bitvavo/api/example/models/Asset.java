@@ -2,14 +2,15 @@ package com.bitvavo.api.example.models;
 
 public class Asset {
     private String symbol;
-    private double amount;
-    private double stakingRewardAmount;
-    private double stakingRewardValue;
-    private double totalvalue;
     private double currentTickerPrice;
+    private double amount;
+    private double amountBought;
+    private double totalValue;
     private double totalCost;
     private double valueSold;
     private double profit;
+    private double stakingRewardAmount;
+    private double stakingRewardValue;
     private double averagePrice;
 
     public Asset() {
@@ -28,8 +29,7 @@ public class Asset {
         this.symbol = symbol;
     }
 
-    public String getMarket()
-    {
+    public String getMarket() {
         String market = symbol + "-EUR";
         return market;
     }
@@ -40,6 +40,14 @@ public class Asset {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public double getAmountBought() {
+        return amountBought;
+    }
+
+    public void setAmountBought(double amountBought) {
+        this.amountBought = amountBought;
     }
 
     public double getStakingRewardAmount() {
@@ -58,12 +66,12 @@ public class Asset {
         this.stakingRewardValue = stakingRewardValue;
     }
 
-    public double getTotalvalue() {
-        return totalvalue;
+    public double getTotalValue() {
+        return totalValue;
     }
 
-    public void setTotalvalue(double totalvalue) {
-        this.totalvalue = totalvalue;
+    public void setTotalValue(double totalValue) {
+        this.totalValue = totalValue;
     }
 
     public double getCurrentTickerPrice() {

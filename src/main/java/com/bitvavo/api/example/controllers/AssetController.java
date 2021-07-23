@@ -24,18 +24,10 @@ public class AssetController {
     private ListView<Asset> assetsListView;
     @FXML
     private TextArea statsTextArea;
-    @FXML
-    private Label profitLabel;
 
     private BitvavoAPI bitvavoAPI;
     private Asset asset;
 
-
-    /*@FXML
-    private void initialize() {
-        ObservableList<Asset> assetsList = FXCollections.observableArrayList(bitvavoAPI.getAllOwnedAssets());
-        assetsListView.setItems(assetsList);
-    }*/
 
     public void populateAssetListView(BitvavoAPI bitvavoAPI) {
         this.bitvavoAPI = bitvavoAPI;
@@ -59,9 +51,11 @@ public class AssetController {
             @Override
             public void changed(ObservableValue<? extends Asset> observable, Asset oldValue, Asset selectedAsset) {
                 selectedAsset.setAmount(bitvavoAPI.getTotalAmount(selectedAsset));
+                statsTextArea.s
                 statsTextArea.setText("Amount: " + selectedAsset.getAmount());
                 System.out.println("Selected item: " + selectedAsset.getSymbol());
+                bitvavoAPI.printRemainingLimit();
             }
-        });
+        });// TODO add label + add unit
     }
 }
