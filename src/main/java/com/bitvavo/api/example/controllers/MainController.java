@@ -43,7 +43,7 @@ public class MainController {
                 alert.setContentText("Please try again.");
                 alert.showAndWait();*/
 
-                //remove after testing
+                //for testing only
                 BitvavoAPI bitvavoAPIKeylessEntry = new BitvavoAPI();
                 openAssetView(bitvavoAPIKeylessEntry);
                 Stage stage = (Stage) button.getScene().getWindow();

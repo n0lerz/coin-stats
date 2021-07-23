@@ -14,7 +14,7 @@ import java.util.*;
  * README: https://github.com/bitvavo/java-bitvavo-api
  */
 
-public class BitvavoAPI {
+public class BitvavoAPI { //TODO delete all printlns
     Bitvavo bitvavo;
 
     //for testing only
@@ -47,13 +47,6 @@ public class BitvavoAPI {
             Asset asset = new Asset(response.getJSONObject(i).getString("symbol"));
             assetList.add(asset);
         }
-
-        for (Asset asset : assetList) //for testing
-        {
-            System.out.println(asset.getSymbol());
-        }
-
-
         return assetList;
     }
 

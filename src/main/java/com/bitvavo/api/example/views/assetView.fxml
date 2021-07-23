@@ -5,8 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bitvavo.api.example.controllers.AssetController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="com.bitvavo.api.example.controllers.AssetController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="63.0" layoutY="337.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
@@ -23,6 +22,30 @@
          </font>
       </Label>
       <ListView fx:id="assetsListView" layoutX="14.0" layoutY="80.0" prefHeight="229.0" prefWidth="280.0" />
-      <TextArea fx:id="statsTextArea" layoutX="306.0" layoutY="80.0" prefHeight="229.0" prefWidth="280.0" />
+      <ScrollPane layoutX="310.0" layoutY="80.0" prefHeight="229.0" prefWidth="280.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label text="Ticker Price:" layoutX="0" layoutY="0"/>
+                  <Label text="" layoutX="200" layoutY="0" fx:id="labelTickerPrice"/>
+                  <Label text="Total Amount:" layoutX="0" layoutY="30"/>
+                  <Label text="" layoutX="200" layoutY="30" fx:id="labelTotalAmount"/>
+                  <Label text="Total Value:" layoutX="0" layoutY="60"/>
+                  <Label text="" layoutX="200" layoutY="60" fx:id="labelTotalValue"/>
+                  <Label text="Total Cost:" layoutX="0" layoutY="90"/>
+                  <Label text="" layoutX="200" layoutY="90" fx:id="labelTotalCost"/>
+                  <Label text="Value sold:" layoutX="0" layoutY="120"/>
+                  <Label text="" layoutX="200" layoutY="120" fx:id="labelValueSold"/>
+                  <Label text="Profit:" layoutX="0" layoutY="150"/>
+                  <Label text="" layoutX="200" layoutY="150" fx:id="labelProfit"/>
+                  <Label text="Staking Reward Amount:" layoutX="0" layoutY="180"/>
+                  <Label text="" layoutX="200" layoutY="180" fx:id="labelStakingAmount"/>
+                  <Label text="Staking Reward Value:" layoutX="0" layoutY="210"/>
+                  <Label text="" layoutX="200" layoutY="210" fx:id="labelStakingValue"/>
+                  <Label text="Average Price:" layoutX="0" layoutY="240"/>
+                  <Label text="" layoutX="200" layoutY="240" fx:id="labelAveragePrice"/>
+               </children></AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
