@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 
+import java.text.DecimalFormat;
+
 public class AssetController {
 
     @FXML
@@ -70,18 +72,24 @@ public class AssetController {
                 selectedAsset.setStakingRewardValue(bitvavoAPI.calculateStakingRewardValue(selectedAsset));
                 selectedAsset.setAveragePrice(bitvavoAPI.calculateAveragePrice(selectedAsset));
 
-                labelTickerPrice.setText("€" + selectedAsset.getCurrentTickerPrice());
+                labelTickerPrice.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getCurrentTickerPrice()));
                 labelTotalAmount.setText(selectedAsset.getAmount() + " " + selectedAsset.getSymbol());
-                labelTotalValue.setText("€" + selectedAsset.getTotalValue());
-                labelTotalCost.setText("€" + selectedAsset.getTotalCost());
-                labelValueSold.setText("€" + selectedAsset.getValueSold());
-                labelProfit.setText("€" + selectedAsset.getProfit());
+                labelTotalValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getTotalValue()));
+                labelTotalCost.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getTotalCost()));
+                labelValueSold.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getValueSold()));
+                labelProfit.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getProfit()));
                 labelStakingAmount.setText(selectedAsset.getStakingRewardAmount() + " " + selectedAsset.getSymbol());
-                labelStakingValue.setText("€" + selectedAsset.getStakingRewardValue());
-                labelAveragePrice.setText("€" + selectedAsset.getAveragePrice());
+                labelStakingValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getStakingRewardValue()));
+                labelAveragePrice.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getAveragePrice()));
 
                 bitvavoAPI.printRemainingLimit();
             }
         });
+    }
+
+    public String roundToTwoDecimalPlaces(double value) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        String roundedValue = df.format(value);
+        return roundedValue;
     }
 }
