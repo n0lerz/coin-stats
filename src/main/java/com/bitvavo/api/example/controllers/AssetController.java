@@ -43,6 +43,7 @@ public class AssetController {
     public void populateAssetListView(BitvavoAPI bitvavoAPI) {
         this.bitvavoAPI = bitvavoAPI;
         ObservableList<Asset> assetsList = FXCollections.observableArrayList(bitvavoAPI.getAllOwnedAssets());
+        assetsList.removeIf(asset -> asset.getSymbol().equals("EUR"));
         assetsListView.setItems(assetsList);
         assetsListView.setCellFactory(param -> new ListCell<Asset>() {
             @Override
@@ -72,7 +73,7 @@ public class AssetController {
                 selectedAsset.setStakingRewardValue(bitvavoAPI.calculateStakingRewardValue(selectedAsset));
                 selectedAsset.setAveragePrice(bitvavoAPI.calculateAveragePrice(selectedAsset));
 
-                labelTickerPrice.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getCurrentTickerPrice()));
+                labelTickerPrice.setText("€" + selectedAsset.getCurrentTickerPrice());
                 labelTotalAmount.setText(selectedAsset.getAmount() + " " + selectedAsset.getSymbol());
                 labelTotalValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getTotalValue()));
                 labelTotalCost.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getTotalCost()));
@@ -80,7 +81,7 @@ public class AssetController {
                 labelProfit.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getProfit()));
                 labelStakingAmount.setText(selectedAsset.getStakingRewardAmount() + " " + selectedAsset.getSymbol());
                 labelStakingValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getStakingRewardValue()));
-                labelAveragePrice.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getAveragePrice()));
+                labelAveragePrice.setText("€" + selectedAsset.getAveragePrice());
 
                 bitvavoAPI.printRemainingLimit();
             }
