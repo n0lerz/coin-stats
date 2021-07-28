@@ -79,7 +79,7 @@ public class AssetController {
                 labelTotalCost.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getTotalCost()));
                 labelValueSold.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getValueSold()));
                 labelProfit.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getProfit()));
-                labelStakingAmount.setText(selectedAsset.getStakingRewardAmount() + " " + selectedAsset.getSymbol());
+                labelStakingAmount.setText(roundToTwoDecimalPlaces(selectedAsset.getStakingRewardAmount()) + " " + selectedAsset.getSymbol());
                 labelStakingValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getStakingRewardValue()));
                 labelAveragePrice.setText("€" + selectedAsset.getAveragePrice());
 
@@ -90,6 +90,12 @@ public class AssetController {
 
     public String roundToTwoDecimalPlaces(double value) {
         DecimalFormat df = new DecimalFormat("0.00");
+        String roundedValue = df.format(value);
+        return roundedValue;
+    }
+
+    public String roundToFiveDecimalPlaces(double value) {
+        DecimalFormat df = new DecimalFormat("0.00000");
         String roundedValue = df.format(value);
         return roundedValue;
     }
