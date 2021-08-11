@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="com.bitvavo.api.example.controllers.AssetController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/" fx:controller="com.bitvavo.api.example.controllers.AssetController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0090e3" height="63.0" layoutY="337.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
@@ -47,5 +47,7 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
+      <Label layoutX="34.0" layoutY="360.0" text="Remaining limit is: " textFill="WHITE" />
+      <Label fx:id="labelRemainingLimit" layoutX="134.0" layoutY="360.0" textFill="WHITE" />
    </children>
 </AnchorPane>

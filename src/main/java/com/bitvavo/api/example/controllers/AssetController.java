@@ -35,6 +35,9 @@ public class AssetController {
     private Label labelStakingValue;
     @FXML
     private Label labelAveragePrice;
+    @FXML
+    private Label labelRemainingLimit;
+
 
 
     private BitvavoAPI bitvavoAPI;
@@ -83,7 +86,7 @@ public class AssetController {
                 labelStakingValue.setText("€" + roundToTwoDecimalPlaces(selectedAsset.getStakingRewardValue()));
                 labelAveragePrice.setText("€" + selectedAsset.getAveragePrice());
 
-                bitvavoAPI.printRemainingLimit();
+                labelRemainingLimit.setText(String.valueOf(bitvavoAPI.getLimit()));
             }
         });
     }

@@ -213,13 +213,11 @@ public class BitvavoAPI {
     public double calculateAveragePrice(Asset asset) {
         double averagePrice = 0.0;
         averagePrice = (calculateTotalCost(asset) / getTotalAmountBought(asset));
-        System.out.println(getTotalAmountBought(asset));
-        System.out.println(getTotalAmountSold(asset));
         return averagePrice;
     }
 
-    public void printRemainingLimit() {
-        int remaining = bitvavo.getRemainingLimit();
-        System.out.println("remaining limit is " + remaining);
+    public int getLimit() {
+        int remainingLimit = bitvavo.getRemainingLimit();
+        return remainingLimit;
     }
 }
